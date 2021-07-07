@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ItemFriend extends StatelessWidget {
+  final avatar;
+  final name ;
+
+  ItemFriend({@required this.avatar, @required this.name});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,7 +17,7 @@ class ItemFriend extends StatelessWidget {
               child: Stack(
                 children: [
                   Image.asset(
-                    "assets/45.png",
+                    avatar,
                     width: 70,
                     height: 70,
                     fit: BoxFit.contain,
@@ -27,7 +32,7 @@ class ItemFriend extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsets.only(top: 10),
-              child: Text("Fernanda", style: TextStyle(fontSize: 12)),
+              child: Text(name, style: TextStyle(fontSize: 12)),
             ),
           ],
         ));
