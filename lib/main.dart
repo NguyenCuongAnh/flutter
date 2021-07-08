@@ -12,6 +12,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:project_flutter/Home.dart';
+import 'package:project_flutter/Menu.dart';
 
 void main() => runApp(const MyApp());
 
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: _title,
       home: MyStatefulWidget(),
     );
@@ -57,10 +59,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       'Index 3: Settings',
       style: optionStyle,
     ),
-    Text(
-      'Index 3: Settings',
-      style: optionStyle,
-    ),
+    Menu(),
   ];
 
   void _onItemTapped(int index) {
@@ -106,6 +105,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         currentIndex: _selectedIndex,
         // selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
+
       ),
     );
   }

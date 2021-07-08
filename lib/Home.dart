@@ -21,41 +21,39 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<int> a = <int>[1, 2, 3, 4, 5, 6];
-    return SingleChildScrollView(
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 20),
-        color: toHex('FAFBFC'),
-        child: Column(
-          children: [
-            Container(
-              child: Header(),
+    var size = MediaQuery.of(context).size;
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 20),
+      color: toHex('FAFBFC'),
+      child: Column(
+        children: [
+          Container(
+            child: Header(),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 10),
+            height: 120,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: entries.length,
+              itemBuilder: (context, int index) {
+                return ItemFriend(
+                  name: entries[index]["name"],
+                  avatar: entries[index]["avt"],
+                );
+              },
             ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 10),
-              height: 120,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: entries.length,
-                itemBuilder: (context, int index) {
-                  return ItemFriend(
-                    name: entries[index]["name"],
-                    avatar: entries[index]["avt"],
-                  );
-                },
-              ),
-            ),
-            Container(
-              height: 400,
-              child: ListView.builder(
-                  physics: const ClampingScrollPhysics(),
-                  scrollDirection: Axis.vertical,
-                  itemCount: a.length,
-                  itemBuilder: (context, index) {
-                    return ItemNews();
-                  }),
-            )
-          ],
-        ),
+          ),
+          Expanded(
+            child: ListView.builder(
+                physics: const ClampingScrollPhysics(),
+                scrollDirection: Axis.vertical,
+                itemCount: a.length,
+                itemBuilder: (context, index) {
+                  return ItemNews();
+                }),
+          )
+        ],
       ),
     );
   }
